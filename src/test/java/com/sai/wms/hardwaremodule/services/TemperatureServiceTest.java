@@ -2,6 +2,7 @@ package com.sai.wms.hardwaremodule.services;
 
 import com.sai.wms.hardwaremodule.hardwares.RaspberryPi;
 import com.sai.wms.hardwaremodule.models.Device;
+import com.sai.wms.hardwaremodule.models.TemperatureSensorDevice;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

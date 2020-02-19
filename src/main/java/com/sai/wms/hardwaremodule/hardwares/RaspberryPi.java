@@ -6,13 +6,17 @@ import com.pi4j.temperature.TemperatureScale;
 import com.sai.wms.hardwaremodule.models.Device;
 import com.sai.wms.hardwaremodule.models.TempScale;
 import com.sai.wms.hardwaremodule.models.TemperatureSensorDevice;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class RaspberryPi {
     private W1Master w1Master;
 
+    @Autowired
     public RaspberryPi(W1Master w1Master) {
         this.w1Master = w1Master;
     }

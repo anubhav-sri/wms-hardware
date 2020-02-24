@@ -44,6 +44,7 @@ jobs:
     machine:
       enabled: true
     steps:
+      - checkout
       - run: gradle assemble
       - store_artifacts:
           path: build/libs

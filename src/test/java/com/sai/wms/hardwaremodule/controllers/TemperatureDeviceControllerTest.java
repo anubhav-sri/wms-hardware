@@ -1,5 +1,6 @@
 package com.sai.wms.hardwaremodule.controllers;
 
+import com.sai.wms.hardwaremodule.models.CurrentReading;
 import com.sai.wms.hardwaremodule.models.Device;
 import com.sai.wms.hardwaremodule.models.TempScale;
 import com.sai.wms.hardwaremodule.models.TemperatureSensorDevice;
@@ -22,7 +23,7 @@ class TemperatureDeviceControllerTest {
 
     @Test
     void shouldGetAllTemperatureDevices() {
-        TemperatureSensorDevice device = new TemperatureSensorDevice("sensor-1", 34.45, TempScale.FARENHEIT);
+        TemperatureSensorDevice device = new TemperatureSensorDevice("sensor-1", new CurrentReading(34.45, TempScale.FARENHEIT));
         when(temperatureService.getAllDevices()).thenReturn(List.of(device));
         List<Device> actualDevices = new TemperatureDeviceController(temperatureService).getAllDevicesOnBoard();
 

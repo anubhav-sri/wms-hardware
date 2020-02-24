@@ -8,33 +8,21 @@ import lombok.Setter;
 @Setter
 public class TemperatureSensorDevice implements Device {
     private String boardName;
-    private double value;
-    private TempScale scale;
+    private CurrentReading currentReading;
 
-    public TemperatureSensorDevice(String boardName, double value, TempScale scale) {
+    public TemperatureSensorDevice(String boardName, CurrentReading currentReading) {
         this.boardName = boardName;
-        this.value = value;
-        this.scale = scale;
+        this.currentReading = currentReading;
     }
 
     @Override
     @JsonIgnore
     public CurrentReading getCurrentReading() {
-        return null;
-    }
-
-    @Override
-    public double getValue() {
-        return value;
+        return currentReading;
     }
 
     @Override
     public String getBoardName() {
         return boardName;
-    }
-
-    @Override
-    public TempScale getScale() {
-        return scale;
     }
 }

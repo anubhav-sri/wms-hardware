@@ -3,6 +3,7 @@ package com.sai.wms.hardwaremodule.hardwares;
 import com.pi4j.component.temperature.TemperatureSensor;
 import com.pi4j.io.w1.W1Master;
 import com.pi4j.temperature.TemperatureScale;
+import com.sai.wms.hardwaremodule.models.CurrentReading;
 import com.sai.wms.hardwaremodule.models.Device;
 import com.sai.wms.hardwaremodule.models.TempScale;
 import com.sai.wms.hardwaremodule.models.TemperatureSensorDevice;
@@ -25,7 +26,7 @@ public class RaspberryPi {
         List<TemperatureSensor> temperatureSensors = w1Master.getDevices(TemperatureSensor.class);
         return temperatureSensors.stream().map(ts -> new TemperatureSensorDevice(
                 ts.getName(),
-                ts.getTemperature(TemperatureScale.FARENHEIT),
-                TempScale.FARENHEIT)).collect(Collectors.toList());
+                new CurrentReading(ts.getTemperature(TemperatureScale.FARENHEIT),
+                        TempScale.FARENHEIT))).collect(Collectors.toList());
     }
 }

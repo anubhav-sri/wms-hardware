@@ -4,6 +4,7 @@ import com.pi4j.component.temperature.TemperatureSensor;
 import com.pi4j.component.temperature.TemperatureSensorBase;
 import com.pi4j.io.w1.W1Master;
 import com.pi4j.temperature.TemperatureScale;
+import com.sai.wms.hardwaremodule.models.CurrentReading;
 import com.sai.wms.hardwaremodule.models.Device;
 import com.sai.wms.hardwaremodule.models.TempScale;
 import com.sai.wms.hardwaremodule.models.TemperatureSensorDevice;
@@ -25,11 +26,11 @@ class RaspberryPiTest {
     @Test
     void shouldReadTheListOf1WireDevices() {
         List<TemperatureSensor> sensorList = List.of(new TestSensor());
-        List<Device> expectedSensors = List.of(new TemperatureSensorDevice("test-sensor", 34.13, TempScale.FARENHEIT));
+        List<Device> expectedSensors = List.of(new TemperatureSensorDevice("test-sensor", new CurrentReading(34.13, TempScale.FARENHEIT)));
         when(w1Master.getDevices(TemperatureSensor.class)).thenReturn(sensorList);
 
         List<Device> actualSensors = new RaspberryPi(w1Master).getAllTemperatureSensors();
-        assertThat(actualSensors).usingFieldByFieldElementComparator().isEqualTo(expectedSensors);
+        assertThat(actualSensors).usingRecursiveFieldByFieldElementComparator().isEqualTo(expectedSensors);
     }
 
     @Test

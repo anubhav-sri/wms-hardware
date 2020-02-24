@@ -5,6 +5,7 @@ import com.pi4j.component.temperature.TemperatureSensor;
 import com.pi4j.component.temperature.TemperatureSensorBase;
 import com.pi4j.io.w1.W1Master;
 import com.pi4j.temperature.TemperatureScale;
+import com.sai.wms.hardwaremodule.models.CurrentReading;
 import com.sai.wms.hardwaremodule.models.TempScale;
 import com.sai.wms.hardwaremodule.models.TemperatureSensorDevice;
 import org.junit.jupiter.api.Test;
@@ -38,7 +39,7 @@ class TemperatureDeviceIntegrationTest {
         mockMvc
                 .perform(get("/registered-temperature-devices"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(objectMapper.writeValueAsString(List.of(new TemperatureSensorDevice("test-name", 43.34, TempScale.FARENHEIT)))));
+                .andExpect(content().string(objectMapper.writeValueAsString(List.of(new TemperatureSensorDevice("test-name", new CurrentReading(43.34, TempScale.FARENHEIT))))));
 
     }
 

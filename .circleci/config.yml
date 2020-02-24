@@ -42,7 +42,7 @@ jobs:
       - run: gradle test
       - run: gradle assemble
       - store_artifacts:
-        path: build/libs
+          path: build/libs
   deploy:
     machine:
       enabled: true

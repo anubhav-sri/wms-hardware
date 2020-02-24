@@ -40,3 +40,22 @@ jobs:
 
       # run tests!
       - run: gradle test
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Deploy in test environment
+          command: |
+            ssh $SSH_USER@$SSH_HOST "cp ./build/libs/hardware-module-0.0.1-SNAPSHOT.jar ~/hardware-module.jar"
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build # only deploy once build job has completed
+          filters:
+            branches:
+              only: master # only deploy on the master branch

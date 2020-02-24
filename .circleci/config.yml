@@ -50,7 +50,7 @@ jobs:
       - run:
           name: Deploy in test environment
           command: |
-            ssh $SSH_USER@$SSH_HOST "cp ./build/libs/hardware-module-0.0.1-SNAPSHOT.jar ~/hardware-module.jar"
+            scp ~/repo/build/libs/hardware-module-0.0.1-SNAPSHOT.jar $SSH_USER@$SSH_HOST ~/hardware-module.jar
 workflows:
   version: 2
   build-and-deploy:

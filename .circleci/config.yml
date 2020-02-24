@@ -51,6 +51,9 @@ jobs:
     machine:
       enabled: true
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "7f:60:4e:6d:80:fd:8c:8b:e8:0f:b6:e2:25:56:c2:5f"
       - attach_workspace:
           at: /tmp/build/libs
       - run:

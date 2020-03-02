@@ -16,7 +16,6 @@ public class TemperatureSensorDevice implements Device {
     }
 
     @Override
-    @JsonIgnore
     public CurrentReading getCurrentReading() {
         return currentReading;
     }

@@ -61,7 +61,7 @@ jobs:
           command: |
             scp -vv /tmp/build/libs/hardware-module-0.0.1-SNAPSHOT.jar $SSH_USER@$SSH_HOST:~/
       - run:
-          name: Deploy in test environment
+          name: Deploy in Prod environment
           command: |
             scp -vv /tmp/build/libs/hardware-module-0.0.1-SNAPSHOT.jar $SSH_USER@$SSH_HOST_PROD:~/
 workflows:
